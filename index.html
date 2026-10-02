@@ -1,34 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>meu painel de tarefas</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"&gt;>
+    <title>Meu Painel de Tarefas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="cartao-aplicacao">
         <header class="cabecalho-aplicacao">
             <h1>Minhas Tarefas</h1>
-            <button id="botao-adicionar" class="botao-principal">
+            <button id="botao-tema" class="botao-icone" title="Alternar tema">
                 <i class="fa-solid fa-moon"></i>
             </button>
         </header>
+
         <div class="caixa-entrada">
             <input type="text" id="campo-tarefa" placeholder="O que vamos fazer hoje?">
             <button id="botao-adicionar" class="botao-principal">
-                <i class="fa-solid fa-plus" ></i>Adicionar</button>
+                <i class="fa-solid fa-plus"></i> Adicionar
+            </button>
         </div>
+
         <ul id="lista-tarefas" class="lista-tarefas">
-            <!-- as tarefas serão inseridas aqui dinamicamente via JS -->
         </ul>
 
         <footer class="rodape-aplicacao">
             <span id="contador-tarefas">0 tarefas na lista</span>
         </footer>
-        <script src="script.js"></script>
-    </div>
-</body>
 
+        <div class="secao-historico">
+            <div class="cabecalho-historico">
+                <h2><i class="fa-solid fa-clock-rotate-left"></i> Histórico</h2>
+                <button id="botao-limpar-historico" class="botao-secundario">Limpar Tudo</button>
+            </div>
+            <ul id="lista-historico" class="lista-tarefas lista-historico">
+            </ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
 </html>

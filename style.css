@@ -1,26 +1,23 @@
-:root{
-    background-image: url('2.webp'); 
-    
-   
+:root {
+    background-image: url('1.png'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 
-    --fundo-cartao:#646262;
+    --fundo-cartao: #646262;
     --cor-texto: #e1e2e4;
-    --cor-primaria:#6c5ce7;
+    --cor-primaria: #6c5ce7;
     --cor-primaria-destaque: #5b4bc4;
-    --cor-borda:#edf2f7;
-    --cor-perigo:#ff7675;
-    --cor-concluido:#a0aec0;
+    --cor-borda: #edf2f7;
+    --cor-perigo: #ff7675;
+    --cor-concluido: #a0aec0;
+    --cor-favorito: #f1c40f;
+    --fundo-item-historico: rgba(0, 0, 0, 0.2);
 }
-/* Modo escuro */
 
+/* Modo escuro */
 body.modo-escuro {
-   
-    background-image: url('p.jpeg'); 
-    
-   
+    background-image: url('IMG_8440.png'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -28,20 +25,18 @@ body.modo-escuro {
     --fundo-cartao: #000000;
     --cor-texto: #f7fafc;
     --cor-borda: #4a5568;
+    --fundo-item-historico: rgba(255, 255, 255, 0.08);
 }
 
-
-
-*{
-box-sizing: border-box;
-margin: 0;
-padding: 0;
-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-transition: background 0.3s, color 0.3s;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: background 0.3s, color 0.3s, border-color 0.3s;
 }
 
-body{
-    background: var(--gradiente-fundo);
+body {
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -49,45 +44,44 @@ body{
     padding: 20px;
 }
 
-.cartao-aplicacao{
-    background:var(--fundo-cartao) ;
+.cartao-aplicacao {
+    background: var(--fundo-cartao);
     color: var(--cor-texto);
     width: 100%;
-    max-width: 420px;
+    max-width: 440px;
     border-radius: 20px;
     padding: 30px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0, 1);
-
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
 }
 
-.cabecalho-aplicacao{
+.cabecalho-aplicacao {
     display: flex;
     justify-content: space-between;
     align-items: center; 
     margin-bottom: 25px; 
 }
 
-.cabecalho-aplicacao h1{
+.cabecalho-aplicacao h1 {
     font-size: 1.5rem;
     font-weight: 700;
 }
-.botao-icone{
+
+.botao-icone {
     background: transparent;
     border: none;
     font-size: 1.2rem;
     color: var(--cor-texto);
     cursor: pointer;
-
 }
 
-.caixa-entrada{
+.caixa-entrada {
     display: flex;
     gap: 10px;
     margin-bottom: 20px;
 }
 
-input[type="text"]{ 
-    flex:1;
+input[type="text"] { 
+    flex: 1;
     padding: 12px 15px;
     border: 2px solid var(--cor-borda);
     border-radius: 12px;
@@ -96,10 +90,12 @@ input[type="text"]{
     background: transparent;
     color: var(--cor-texto);
 }
-input[type="text"]:focus{
+
+input[type="text"]:focus {
     border-color: var(--cor-primaria);
 }
-.botao-principal{
+
+.botao-principal {
     background: var(--cor-primaria);
     color: white;
     border: none;
@@ -107,61 +103,147 @@ input[type="text"]:focus{
     border-radius: 12px;
     font-weight: 600;
     cursor: pointer;
-    transition: transform 0.1s background 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: transform 0.1s, background 0.2s;
 }
 
-.botao-principal:hover{
+.botao-principal:hover {
     background: var(--cor-primaria-destaque);
     transform: translateY(-2px);
 }
 
-.lista-tarefas{
+.lista-tarefas {
     list-style: none;
-    max-height: 280px;
-    overflow-y:auto;
+    max-height: 220px;
+    overflow-y: auto;
 }
-.item-tarefa{
+
+.item-tarefa {
     display: flex;
     align-items: center;
-justify-content: space-between;
-padding: 12px;
-background: var(--cor-borda);
-border-radius: 10px;
-margin-bottom: 10px;
-animation: aparecer 0.3s esse;
+    justify-content: space-between;
+    padding: 12px;
+    background: var(--cor-borda);
+    color: #2d3748;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    animation: aparecer 0.3s ease;
 }
 
-.item-tarefa.concluida span{
-text-decoration: line-through;
-color: var(--cor-concluido);
+body.modo-escuro .item-tarefa {
+    color: var(--cor-texto);
 }
 
-.acoes-tarefa{
+.conteudo-tarefa {
     display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    flex: 1;
+}
+
+.item-tarefa.concluida .texto-tarefa {
+    text-decoration: line-through;
+    color: var(--cor-concluido);
+}
+
+/* Tarefa Favorita */
+.item-tarefa.favorita {
+    border: 2px solid var(--cor-favorito);
+    background: rgba(241, 196, 15, 0.12);
+}
+
+.acoes-tarefa, .acoes-historico {
+    display: flex;
+    align-items: center;
     gap: 8px;
 }
 
-.botao-acao{
+.botao-acao {
     background: none;
     border: none;
     cursor: pointer;
     font-size: 1rem;
-    color: var(--cor-texto);
+    color: inherit;
+    transition: color 0.2s;
 }
 
-.botao-acao.excluir.hover{
-    color:var(--cor-perigo);
+.botao-acao.favoritar {
+    color: var(--cor-concluido);
 }
-.rodape.aplicacao{
+
+.item-tarefa.favorita .botao-acao.favoritar,
+.botao-acao.favoritar:hover {
+    color: var(--cor-favorito);
+}
+
+.botao-acao.excluir:hover,
+.botao-acao.excluir-definitivo:hover {
+    color: var(--cor-perigo);
+}
+
+.botao-acao.restaurar:hover {
+    color: var(--cor-primaria);
+}
+
+.rodape-aplicacao {
     margin-top: 15px;
     font-size: 0.85rem;
     color: var(--cor-concluido);
     text-align: center;
-}
-@keyframes aparecer{
-    from{opacity: 0; transform: translateY(10px);}
-    to{opacity: 1; transform: translateY(0);}
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--cor-borda);
 }
 
+/* Seção de Histórico */
+.secao-historico {
+    margin-top: 20px;
+}
 
+.cabecalho-historico {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
 
+.cabecalho-historico h2 {
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--cor-texto);
+}
+
+.botao-secundario {
+    background: transparent;
+    border: 1px solid var(--cor-borda);
+    color: var(--cor-texto);
+    padding: 4px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.75rem;
+}
+
+.botao-secundario:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.lista-historico .item-tarefa {
+    background: var(--fundo-item-historico);
+    color: var(--cor-texto);
+    opacity: 0.85;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
